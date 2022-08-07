@@ -10,22 +10,13 @@ public class LineUpdateRequest {
 
     private String color;
 
-    private Long upStationId;
-
-    private Long downStationId;
-
-    private Long distance;
-
-    public LineUpdateRequest(String name, String color, Long upStationId, Long downStationId, Long distance) {
+    public LineUpdateRequest(String name, String color) {
         this.name = name;
         this.color = color;
-        this.upStationId = upStationId;
-        this.downStationId = downStationId;
-        this.distance = distance;
     }
 
     public Line toLine() {
-        return new Line(null, this.name, this.color, null, this.distance);
+        return new Line(null, this.name, this.color, null, null);
     }
 
     public String getName() {
@@ -34,17 +25,5 @@ public class LineUpdateRequest {
 
     public String getColor() {
         return color;
-    }
-
-    public Long getUpStationId() {
-        return upStationId;
-    }
-
-    public Long getDownStationId() {
-        return downStationId;
-    }
-
-    public Long getDistance() {
-        return distance;
     }
 }

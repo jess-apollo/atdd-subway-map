@@ -56,7 +56,7 @@ public class Line {
         return this.distance;
     }
 
-    public void update(Line updateLine, Station upStation, Station downStation) {
+    public void update(Line updateLine) {
         if (updateLine.getName() != null) {
             this.name = updateLine.getName();
         }
@@ -64,12 +64,6 @@ public class Line {
         if (updateLine.getColor() != null) {
             this.color = updateLine.getColor();
         }
-
-        if (updateLine.getDistance() != null) {
-            this.distance = updateLine.getDistance();
-        }
-
-        this.sections.get(0).update(upStation, downStation, updateLine.getDistance());
     }
 
     public void addSection(Section section) {

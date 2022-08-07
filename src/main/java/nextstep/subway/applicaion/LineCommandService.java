@@ -35,11 +35,9 @@ public class LineCommandService {
 
     public void updateLine(Long id, LineUpdateRequest lineUpdateRequest) {
         Line line = findLineOrElseThrow(id);
-        Station upStation = stationQueryService.findById(lineUpdateRequest.getUpStationId());
-        Station downStation = stationQueryService.findById(lineUpdateRequest.getDownStationId());
 
         Line updated = lineUpdateRequest.toLine();
-        line.update(updated, upStation, downStation);
+        line.update(updated);
     }
 
     public void deleteLineById(Long id) {

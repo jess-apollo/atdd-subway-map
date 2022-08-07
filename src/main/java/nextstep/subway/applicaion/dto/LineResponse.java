@@ -35,7 +35,6 @@ public class LineResponse {
     public void updateResponse(LineUpdateRequest request) {
         this.name = request.getName() != null ? request.getName() : this.name;
         this.color = request.getColor() != null ? request.getColor() : this.color;
-        this.distance = request.getDistance() != null ? request.getDistance() : this.distance;
     }
 
     public Long getId() {
