@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Embeddable
 public class Sections {
@@ -26,7 +25,11 @@ public class Sections {
     public static final String DELETE_WHEN_SECTION_TWO_OR_MORE
             = "지하철 구간의 개수가 2 이상일 때만 구간을 제거할 수 있습니다.";
 
-    @OneToMany(mappedBy = "line", cascade = CascadeType.ALL)
+    @OneToMany(
+            mappedBy = "line",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Section> sections = new ArrayList<>();
 
     public List<Section> value() {
@@ -71,7 +74,6 @@ public class Sections {
         checkSectionDeleteRulesOrThrow(stationId);
 
         int lastSectionIndex = this.sections.size() - 1;
-        this.sections.get(lastSectionIndex).delete();
         this.sections.remove(lastSectionIndex);
     }
 

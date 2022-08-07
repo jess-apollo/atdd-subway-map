@@ -45,10 +45,6 @@ public class Section {
         this.distance = distance != null ? distance : this.distance;
     }
 
-    public void delete() {
-        this.line = null;
-    }
-
     public Station getUpStation() { return this.upStation; }
 
     public Station getDownStation() {
