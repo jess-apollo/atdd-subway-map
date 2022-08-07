@@ -24,7 +24,7 @@ public class Line {
 
     private Long distance;
 
-    public Line(LineCreateRequest lineCreateRequest, Section section) {
+    public Line(Line lineCreateRequest, Section section) {
         this.name = lineCreateRequest.getName();
         this.color = lineCreateRequest.getColor();
         section.setLine(this);
@@ -37,6 +37,13 @@ public class Line {
         this.name = name;
         this.color = color;
         this.sections = sections;
+        this.distance = distance;
+    }
+
+    public Line(Long id, String name, String color, Long distance) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
         this.distance = distance;
     }
 

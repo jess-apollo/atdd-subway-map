@@ -28,7 +28,8 @@ public class LineCommandService {
         Station downStation = stationQueryService.findById(lineCreateRequest.getDownStationId());
 
         Section section = new Section(upStation, downStation, lineCreateRequest.getDistance());
-        Line line = lineRepository.save(new Line(lineCreateRequest, section));
+        Line request = lineCreateRequest.toLine(lineCreateRequest);
+        Line line = lineRepository.save(new Line(request, section));
 
         return createLineResponse(line);
     }
