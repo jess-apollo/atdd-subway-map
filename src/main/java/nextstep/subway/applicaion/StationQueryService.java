@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 public class StationQueryService {
     private static final String STATION_NOTFOUND_MESSAGE = "해당 id의 지하철 역이 존재하지 않습니다.";
 
+    private static final String STATION_ID_NULL = "지하철 역의 ID가 Null 입니다.";
+
     private final StationRepository stationRepository;
 
     public List<StationResponse> findAllStations() {
@@ -31,7 +33,7 @@ public class StationQueryService {
 
     public Station findById(Long id) {
         if (id == null) {
-            return new Station();
+            throw new IllegalArgumentException(STATION_ID_NULL);
         }
 
         return stationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(STATION_NOTFOUND_MESSAGE));
